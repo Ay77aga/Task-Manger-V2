@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  background: #124;
+  background-image: url("imgs/bg.jpg");
+  font-family: 'Courgette', Amiri;
+  background-size: cover;
+}
+
+header {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  height: 50px;
+  font-weight: bold;
+  color: #124;
+}
+
+header p {
+  margin-left: 20px;
+
+}
+
+header p span {
+  color: dodgerblue;
+}
+
+.tasks {
+  background: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(20px);
+  height: 70vh;
+  margin: auto;
+  width: 98%;
+  padding: 10px;
+  color: #fff;
+  overflow: scroll;
+}
+
+.d {
+  background-image: url("imgs/done.svg");
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+svg {
+  height: 40px;
+  width: 40px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  margin: 10px auto;
+  justify-content: space-around;
+}
+
+.add {
+  fill: orange;
+  transform: scale(0);
+  transition: .5s;
+}
+
+.form input {
+  padding: 10px;
+  border: none;
+  width: 80%;
+  background: #237BFF69;
+
+  backdrop-filter: blur(8px);
+  font-weight: bold;
+  font-size: 20px;
+  height: 40px;
+  color: #00BF1F;
+  transition: .3s;
+  border-radius: 2rem;
+  border-bottom: 2px solid limegreen;
+}
+
+.form input:focus {
+  padding-left: 30px;
+  outline: none;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 900;
+  position: relative;
+  height: 90px;
+  padding: 10px;
+  margin: 10px auto;
+  background: #00000087;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.task:nth-of-type(even) {
+  border: 2px solid royalblue;
+
+}
+
+.task:nth-of-type(odd) {
+  border: 2px solid #a7a;
+
+}
+
+.task p {
+  overflow: scroll;
+  width: calc(100% - 100px);
+  border-right: 1px solid red;
+  color: dodgerblue;
+  max-height: 55px;
+  font-size: 25px;
+}
+
+.status {
+  margin-top: -10px;
+}
+
+.task svg {
+  position: relative;
+  transform: scale(.7)
+}
+
+.del,
+.done {
+  height: 40px;
+  width: 40px;
+  position: relative;
+}
+
+.del {
+  background-image: url("imgs/del.svg")
+}
+
+.done {
+  background-image: url("imgs/done.svg")
+}
+
+.finsh p {
+  transition: .3s;
+  text-decoration: 5px line-through red;
+}
+
+.finsh::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  left: 50%;
+  animation: pop .3s both linear;
+  background: #237BFF69;
+}
+
+@keyframes pop {
+  frome {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+
+  }
+}
+
+.task .time {
+  position: absolute;
+  font-size: 13px;
+  color: dodgerblue;
+  bottom: 5px;
+  right: 5px;
+  font-weight: bold;
+}
+
+.clear {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("imgs/del.svg");
+  height: 60px;
+  width: 60px;
+
+}
