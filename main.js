@@ -27,6 +27,8 @@ Add.addEventListener('click', (e) => {
       tasks_area.classList.remove('d');
     }
   }
+      Add.style.transform = 'scale(0)'
+
   count.innerHTML = tasks.length;
   input.value = '';
 
