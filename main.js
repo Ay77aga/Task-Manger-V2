@@ -3,39 +3,45 @@ let Add = document.querySelector('.add');
 let input = document.querySelector('input');
 let tasks_area = document.querySelector('.tasks');
 let tasks = [];
-count.innerHTML = tasks.length;
 
-
-if (window.localStorage.Tasks) {
-  tasks = JSON.parse(localStorage.Tasks);
-  render(tasks);
+const App = () => {
   count.innerHTML = tasks.length;
-}
-input.addEventListener('input', () => {
-  if (input.value.length > 0) {
-    Add.style.transform = 'scale(1.5)'
-  } else {
-    Add.style.transform = 'scale(0)'
-  }
-
-});
-Add.addEventListener('click', (e) => {
-  if (input.value !== '') {
-    Add_task(input.value);
+  
+  // if found tasks in location => Get 
+  if (window.localStorage.Tasks) {
+    tasks = JSON.parse(localStorage.Tasks);
     render(tasks);
-    if (tasks.length > 0) {
-      tasks_area.classList.remove('d');
-    }
+    count.innerHTML = tasks.length;
   }
-  Add.style.transform = 'scale(0)'
-  tasks_area.scrollTop = tasks_area.scrollHeight;
-  count.innerHTML = tasks.length;
-  input.value = '';
+  
+  // Add btn 
+  input.addEventListener('input', () => {
+    if (input.value.length > 0) {
+      Add.style.transform = 'scale(1.5)'
+    } else {
+      Add.style.transform = 'scale(0)'
+    }
+  });
+  
+  // Add task 
+  Add.addEventListener('click', (e) => {
+    if (input.value !== '') {
+      Add_task(input.value);
+      render(tasks);
+      if (tasks.length > 0) {
+        tasks_area.classList.remove('d');
+      }
+    }
+    Add.style.transform = 'scale(0)'
+    tasks_area.scrollTop = tasks_area.scrollHeight;
+    count.innerHTML = tasks.length;
+    input.value = '';
+  });
 
-});
-
-
-
+  // Remove All Tasks
+  document.querySelector('.clear').onclick = clear;
+}
+App();
 
 // Functions
 
@@ -48,9 +54,9 @@ function Add_task(txt) {
   }
   tasks.push(obj);
   add_storage(tasks);
-
 }
 
+// Get time 
 function time() {
   let h = new Date().getHours();
   let m = new Date().getMinutes();
@@ -61,15 +67,14 @@ function time() {
   return h > 12 ? `${d} / ${mon} / ${h - 12}:${m} PM` : `${h}:${m} AM`;
 }
 
+// Add in localStorage
 function add_storage(data) {
   window.localStorage.setItem('Tasks', JSON.stringify(data));
-
 }
 
+// render Elements in Page
 function render(tasks) {
-
   tasks_area.innerHTML = '';
-
   tasks.forEach((t) => {
     let task = document.createElement('div');
     task.className = 'task';
@@ -103,7 +108,7 @@ function render(tasks) {
   });
 }
 
-
+// Refresh Task Status
 function status(id) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id == id) {
@@ -112,22 +117,20 @@ function status(id) {
   }
   add_storage(tasks);
   count.innerHTML = tasks.length;
-
 }
 
+// Delet Task
 function delet(id) {
   tasks = tasks.filter((task) => task.id != id);
   add_storage(tasks);
   count.innerHTML = tasks.length;
-
 }
 
+// Delet All Tasks
 function clear() {
   window.localStorage.removeItem('Tasks');
   tasks_area.innerHTML = 'All tasks removed';
   count.innerHTML = 0;
   tasks_area.classList.add('d');
   tasks = [];
-
 }
-document.querySelector('.clear').onclick = clear;
