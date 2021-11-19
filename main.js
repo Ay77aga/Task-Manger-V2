@@ -28,7 +28,7 @@ Add.addEventListener('click', (e) => {
     }
   }
   Add.style.transform = 'scale(0)'
-tasks_area.scrollTop = tasks_area.scrollHeight ;
+  tasks_area.scrollTop = tasks_area.scrollHeight;
   count.innerHTML = tasks.length;
   input.value = '';
 
@@ -54,8 +54,11 @@ function Add_task(txt) {
 function time() {
   let h = new Date().getHours();
   let m = new Date().getMinutes();
+  let d = new Date().getDate();
+  let mon = new Date().getMonth()+1;
+  console.log(`${d} ${mon}`)
   m = m < 10 ? `0${m}` : m;
-  return h > 12 ? `${h - 12}:${m} PM` : `${h}:${m} AM`;
+  return h > 12 ? `${d} / ${mon} / ${h - 12}:${m} PM` : `${h}:${m} AM`;
 }
 
 function add_storage(data) {
@@ -122,7 +125,7 @@ function clear() {
   tasks_area.innerHTML = 'All tasks removed';
   count.innerHTML = 0;
   tasks_area.classList.add('d');
-
+  tasks = [];
 
 }
 
