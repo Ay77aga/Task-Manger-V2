@@ -34,13 +34,13 @@ header p span {
 
 .tasks {
   background: rgba(0, 0, 0, .7);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(5px);
   height: 70vh;
   margin: auto;
   width: 98%;
   padding: 10px;
   color: #fff;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .d {
@@ -96,11 +96,24 @@ svg {
   font-weight: 900;
   position: relative;
   height: 90px;
+  width: 100%;
   padding: 10px;
   margin: 10px auto;
-  background: #00000087;
+  background: #0000007D;
   border-radius: 1rem;
   overflow: hidden;
+  animation: up .3s both;
+}
+
+@keyframes up {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+
+  }
 }
 
 .task:nth-of-type(even) {
@@ -121,7 +134,6 @@ svg {
   max-height: 55px;
   font-size: 25px;
 }
-
 .status {
   margin-top: -10px;
 }
@@ -192,4 +204,17 @@ svg {
   height: 60px;
   width: 60px;
 
+}
+
+.container {
+  margin: 10px auto;
+ border: 2px double palegreen;
+ border-radius: 1rem;
+ overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 70%;
+  }
 }

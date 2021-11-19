@@ -27,8 +27,8 @@ Add.addEventListener('click', (e) => {
       tasks_area.classList.remove('d');
     }
   }
-      Add.style.transform = 'scale(0)'
-
+  Add.style.transform = 'scale(0)'
+tasks_area.scrollTop = tasks_area.scrollHeight ;
   count.innerHTML = tasks.length;
   input.value = '';
 
@@ -126,4 +126,4 @@ function clear() {
 
 }
 
-document.querySelector('.clear').onclick = clear;;
+document.querySelector('.clear').onclick = clear;
