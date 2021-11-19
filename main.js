@@ -55,7 +55,7 @@ function time() {
   let h = new Date().getHours();
   let m = new Date().getMinutes();
   let d = new Date().getDate();
-  let mon = new Date().getMonth()+1;
+  let mon = new Date().getMonth() + 1;
   console.log(`${d} ${mon}`)
   m = m < 10 ? `0${m}` : m;
   return h > 12 ? `${d} / ${mon} / ${h - 12}:${m} PM` : `${h}:${m} AM`;
@@ -128,5 +128,4 @@ function clear() {
   tasks = [];
 
 }
-
 document.querySelector('.clear').onclick = clear;
