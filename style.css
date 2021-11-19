@@ -95,9 +95,9 @@ svg {
   align-items: center;
   font-weight: 900;
   position: relative;
-  height: 90px;
+  height: 120px;
   width: 100%;
-  padding: 10px;
+  padding: 0 5px;
   margin: 10px auto;
   background: #0000007D;
   border-radius: 1rem;
@@ -128,7 +128,7 @@ svg {
 
 .task p {
   overflow: scroll;
-  width: calc(100% - 100px);
+  width: calc(100% - 90px);
   border-right: 1px solid red;
   color: dodgerblue;
   max-height: 55px;
@@ -161,29 +161,6 @@ svg {
 .finsh p {
   transition: .3s;
   text-decoration: 5px line-through red;
-}
-
-.finsh::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  left: 50%;
-  animation: pop .3s both linear;
-  background: #237BFF69;
-}
-
-@keyframes pop {
-  frome {
-    transform: translate(-50%, -50%) scale(0);
-  }
-
-  to {
-    transform: translate(-50%, -50%) scale(1);
-
-  }
 }
 
 .task .time {
