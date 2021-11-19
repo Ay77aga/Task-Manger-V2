@@ -75,6 +75,7 @@ function render(tasks) {
     task.className = 'task';
     task.setAttribute('data-id', t.id);
     let p = document.createElement('p');
+    p.classList = 'p';
     p.appendChild(document.createTextNode(t.value));
     let span = document.createElement('span');
     span.className = 'time';
@@ -101,6 +102,7 @@ function render(tasks) {
     }
   });
 }
+
 
 function status(id) {
   for (let i = 0; i < tasks.length; i++) {

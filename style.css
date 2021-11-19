@@ -95,7 +95,7 @@ svg {
   align-items: center;
   font-weight: 900;
   position: relative;
-  height: 120px;
+  height: 90px;
   width: 100%;
   padding: 0 5px;
   margin: 10px auto;
@@ -194,4 +194,13 @@ svg {
   .container {
     width: 70%;
   }
+}
+
+.edit{
+  position: absolute;
+  height: 200px;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
