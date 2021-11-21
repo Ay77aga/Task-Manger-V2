@@ -6,25 +6,25 @@ let tasks = [];
 
 const App = () => {
   count.innerHTML = tasks.length;
-  
+
   // if found tasks in location => Get 
   if (window.localStorage.Tasks) {
     tasks = JSON.parse(localStorage.Tasks);
     render(tasks);
     count.innerHTML = tasks.length;
   }
-  
+
   // Add btn 
   input.addEventListener('input', () => {
     if (input.value.length > 0) {
-      Add.style.transform = 'scale(1.5)'
+      Add.style.transform = 'scale(1.5)';
     } else {
-      Add.style.transform = 'scale(0)'
+      Add.style.transform = 'scale(0)';
     }
   });
-  
+
   // Add task 
-  Add.addEventListener('click', (e) => {
+  Add.addEventListener('click', () => {
     if (input.value !== '') {
       Add_task(input.value);
       render(tasks);
@@ -32,7 +32,7 @@ const App = () => {
         tasks_area.classList.remove('d');
       }
     }
-    Add.style.transform = 'scale(0)'
+    Add.style.transform = 'scale(0)';
     tasks_area.scrollTop = tasks_area.scrollHeight;
     count.innerHTML = tasks.length;
     input.value = '';
@@ -40,7 +40,7 @@ const App = () => {
 
   // Remove All Tasks
   document.querySelector('.clear').onclick = clear;
-}
+};
 App();
 
 // Functions
@@ -51,7 +51,7 @@ function Add_task(txt) {
     value: txt,
     status: false,
     time: time(),
-  }
+  };
   tasks.push(obj);
   add_storage(tasks);
 }
@@ -62,7 +62,6 @@ function time() {
   let m = new Date().getMinutes();
   let d = new Date().getDate();
   let mon = new Date().getMonth() + 1;
-  console.log(`${d} ${mon}`)
   m = m < 10 ? `0${m}` : m;
   return h > 12 ? `${d} / ${mon} / ${h - 12}:${m} PM` : `${h}:${m} AM`;
 }
@@ -95,26 +94,26 @@ function render(tasks) {
     task.appendChild(done);
     tasks_area.appendChild(task);
     if (t.status == true) {
-      task.classList.add('finsh')
+      task.classList.add('finsh');
     }
     done.onclick = (e) => {
       e.target.parentElement.classList.toggle('finsh');
-      status(t.id)
-    }
+      task_status(t.id);
+    };
     del.onclick = (e) => {
       e.target.parentElement.remove();
       delet(t.id);
-    }
+    };
   });
 }
 
 // Refresh Task Status
-function status(id) {
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].id == id) {
-      tasks[i].status == false ? tasks[i].status = true : tasks[i].status = false;
+function task_status(id) {
+  tasks.forEach((task) => {
+    if (task.id == id) {
+      task.status == false ? task.status = true : task.status = false;
     }
-  }
+  });
   add_storage(tasks);
   count.innerHTML = tasks.length;
 }
