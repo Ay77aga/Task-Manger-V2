@@ -102,12 +102,21 @@ svg {
   background: #0000007D;
   border-radius: 1rem;
   overflow: hidden;
-  animation: up .3s both;
 }
 
-@keyframes up {
+@keyframes left {
   from {
-    transform: translateY(100%);
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+
+  }
+}
+@keyframes right {
+  from {
+    transform: translateX(100%);
   }
 
   to {
@@ -118,11 +127,12 @@ svg {
 
 .task:nth-of-type(even) {
   border: 2px solid royalblue;
-
+  animation: left .5s .2s both;
 }
 
 .task:nth-of-type(odd) {
-  border: 2px solid #a7a;
+   animation: right .5s .2s both;
+ border: 2px solid #a7a;
 
 }
 
