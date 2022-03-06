@@ -4,6 +4,7 @@ let input = document.querySelector('input');
 let tasks_area = document.querySelector('.tasks');
 let tasks = [];
 
+
 const App = () => {
   count.innerHTML = tasks.length;
 
@@ -43,6 +44,14 @@ const App = () => {
 };
 App();
 
+
+
+
+
+
+
+
+
 // Functions
 
 function Add_task(txt) {
@@ -63,7 +72,7 @@ function time() {
   let d = new Date().getDate();
   let mon = new Date().getMonth() + 1;
   m = m < 10 ? `0${m}` : m;
-  return h > 12 ? `${d} / ${mon} / ${h - 12}:${m} PM` : `${h}:${m} AM`;
+  return h >= 12 ? `${d} / ${mon} / ${h - 12}:${m} PM` : `${h}:${m} AM`;
 }
 
 // Add in localStorage
